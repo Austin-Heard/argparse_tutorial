@@ -1,19 +1,20 @@
 import argparse
 
-parser = argparse.ArgumentParser(description="calculate X to the power of Y")
-group = parser.add_mutually_exclusive_group()
+parser = argparse.ArgumentParser(description="calculate X to the power of Y") #Takes arguements and gives a description of the function when
+#--help is called
+group = parser.add_mutually_exclusive_group() #Specifies options that conflict with one another, in this case verbose and quiet
 group.add_argument("-v", "--verbose", action="store_true")
 group.add_argument("-q", "--quiet", action="store_true")
-parser.add_argument("x", type=int, help="the base")
+parser.add_argument("x", type=int, help="the base") #Arguements
 parser.add_argument("y", type=int, help="the exponent")
-args = parser.parse_args()
-answer = args.x**args.y
+args = parser.parse_args() #Parses the arguements given into variables
+answer = args.x**args.y #Function of prog.py (besides learning)
 
-if args.quiet:
+if args.quiet: #If quiet flag is present, give the answer only
     print(answer)
-elif args.verbose:
+elif args.verbose: #If verbose is present, give more descript answer
     print(f"{args.x} to the power {args.y} equals {answer}")
-else:
+else: #Default format for answering
     print(f"{args.x}^{args.y} == {answer}")
 
 """
